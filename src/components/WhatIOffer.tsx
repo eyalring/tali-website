@@ -1,54 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FaUsers,
-  FaVenusMars,
-  FaHome,
-  FaSchool,
-  FaBookOpen,
-} from "react-icons/fa";
+import Image from "next/image";
 
 interface Offer {
   id: number;
   title: string;
   description: string;
-  icon: React.ReactNode;
+  imagePath: string;
 }
 
 const offers: Offer[] = [
   {
     id: 1,
-    title: "מבוגרים",
+    title: "הרצאות למבוגרים",
     description:
       "הרצאות במתנ״סים, בתי אבות, ועדי עובדים, קהילות ומועדונים חברתיים",
-    icon: <FaUsers className="text-5xl" />,
+    imagePath: "/images/offers/adults.jpg",
   },
   {
     id: 2,
-    title: "נשים",
+    title: "הרצאות לנשים",
     description: "הרצאות ליום האישה, לחברות, לקהילות נשים, ולקבוצות עניין",
-    icon: <FaVenusMars className="text-5xl" />,
+    imagePath: "/images/offers/women.jpg",
   },
   {
     id: 3,
-    title: "קבוצות פרטיות והרצאות בית",
-    description: "הרצאות לקבוצות פרטיות, הרצאות בית, וערבי שישי מיוחדים",
-    icon: <FaHome className="text-5xl" />,
+    title: "קבוצות פרטיות וחוגי בית",
+    description: "הרצאות לקבוצות פרטיות, חוג בית, וערבי שישי מיוחדים",
+    imagePath: "/images/offers/home.jpg",
   },
   {
     id: 4,
-    title: "בתי ספר",
+    title: "הרצאות לתלמידים",
     description:
       "הרצאות לתלמידי חטיבות ביניים ותיכון, תלמידי מגמות ביולוגיה וכיתות רגילות",
-    icon: <FaSchool className="text-5xl" />,
+    imagePath: "/images/offers/students.jpg",
   },
   {
     id: 5,
     title: "קורסים",
     description:
       "קורסים בגנטיקה, וירולוגיה, ומדעי החיים - מרמת מתחילים ועד מתקדמים",
-    icon: <FaBookOpen className="text-5xl" />,
+    imagePath: "/images/offers/courses.jpg",
   },
 ];
 
@@ -77,8 +71,14 @@ export default function WhatIOffer() {
             transition={{ duration: 0.6, delay: index * 0.1 }}
             className="card p-8 text-center"
           >
-            <div className="flex justify-center text-primary-600 mb-4">
-              {offer.icon}
+            <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+              <Image
+                src={offer.imagePath}
+                alt={offer.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </div>
             <h3 className="text-xl md:text-2xl font-heading font-bold text-primary-800 mb-4">
               {offer.title}

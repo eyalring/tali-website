@@ -42,7 +42,7 @@ export default function RootLayout({
       dir="rtl"
       className={`${inter.variable} ${poppins.variable}`}
     >
-      <body className="font-sans">
+      <body className="font-sans overflow-x-hidden">
         <Navigation />
         <main>{children}</main>
         <Footer />
