@@ -14,10 +14,10 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "דפנה גור",
-    role: "מנהלת קהילה",
+    name: "ענבל לוי",
+    role: "",
     content:
-      "היה לנו כיף בהרצאה של דר' טלי על גנטיקה. נושא מרתק ומדענית נפלאה שיודעת להעביר את הידע והתשוקה שלה לנושא באופן שגורם לך להתאהב במדע. ההרצאה מועברת בצורה נהדרת, נעימה וקליטה עם הרבה דוגמאות, היא גורמת לך לחשוב ופותחת צוהר לעולם שלא כולם מכירים בתוספת צחוק והנאה במהלך ההרצאה ועוד הרבה נושאים שכדאי לשמוע מדר' טלי. ממליצה בחום לכל אירוע שתרצו לארגן בין אם זה קהילתי משפחתי נשים או בבתי הספר של הילדים שלכן. מומלצת בחום!",
+      "היה ממש כייף! וכן, אם יזדמן לכו לשמוע את Tali Surfing Ringwald ותזמינו אותה להרצות במקומות העבודה שלכן ובבתי הספר של הילדים שלכן. מומלצת בחום!",
   },
   {
     id: 2,
@@ -60,27 +60,31 @@ const testimonials: Testimonial[] = [
     content:
       "היי טלי, רציתי להגיד לך שההרצאה שלך היתה אחת ההרצאות הטובות והמרתקות ששמעתי בחיי. את מרצה בחסד, שולטת בחומר בצורה מדהימה, המצגת שלך בנויה לתפארת, וזה ממש לא דומה לקורס הגנטיקה הכל כך חדגוני שלמדתי בתואר שלי לפני יותר מ-30 שנה. ממש עשית את הצעד הנכון, וההרגשה היא שהעולם חיכה לך שתגלי לו את כל הידע המרתק הזה!",
   },
+  {
+    id: 8,
+    name: "גלית זר בסון",
+    role: "כתיבת תוכן | שיווק דיגיטלי | עיצוב ובניית אתרים. מייסדת ומנהלת את קהילת השוות של ראש העין",
+    content:
+      "התוכן שבחמישי האחרון נפגשנו לערב #שווהקפה שהשאיר אותנו מרותקות תרתי משמע (ויעידו אלו שלא רצו ללכת לשירותים כדי לא לפספס אפילו מילה😉) על ההרצאה המרתקת אחראית ד״ר Tali Sufrin-Ringwald שיצאה ממעבדת המחקר והיום היא מרצה נהדרת. היא דיברה איתנו על הגנטיקה של האימהות, על המוח ועל סוגי האימהות שיש בטבע, והשאירה אותנו עם הרצון לשמוע עוד. זו הרצאה חובה לכל אישה ולכל אימא! אז ממליצה לכן בחום לעקוב אחריה. טלי, תודה ענקית על הרצאה מרתקת!",
+  },
 ];
-
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+  const fadeVariants = {
+    enter: {
       opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
+      scale: 0.95,
     },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+    center: {
+      opacity: 1,
+      scale: 1,
+    },
+    exit: {
       opacity: 0,
-    }),
+      scale: 0.95,
+    },
   };
 
   const paginate = (newDirection: number) => {
@@ -122,21 +126,20 @@ export default function Testimonials() {
 
           {/* Testimonial Content */}
           <div className="relative w-full">
-            <AnimatePresence initial={false} custom={direction}>
+            <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
+                variants={fadeVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
+                  duration: 0.4,
+                  ease: "easeInOut",
                 }}
                 className="w-full"
               >
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6 italic">
+                <p className="text-lg md:text-xl text-black leading-relaxed mb-6 italic">
                   "{testimonials[currentIndex].content}"
                 </p>
                 <div className="text-right">
@@ -144,7 +147,7 @@ export default function Testimonials() {
                     {testimonials[currentIndex].name}
                   </p>
                   {testimonials[currentIndex].role && (
-                    <p className="text-gray-600">
+                    <p className="text-black">
                       {testimonials[currentIndex].role}
                     </p>
                   )}
@@ -156,14 +159,14 @@ export default function Testimonials() {
           {/* Navigation Buttons */}
           <button
             onClick={() => paginate(-1)}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="absolute left-2 md:-left-8 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
             aria-label="Previous testimonial"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="absolute right-2 md:-right-8 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
             aria-label="Next testimonial"
           >
             <FaChevronRight />

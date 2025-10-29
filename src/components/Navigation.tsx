@@ -7,7 +7,7 @@ const navItems = [
   { id: "home", label: "בית" },
   { id: "lectures", label: "ההרצאות שלי" },
   { id: "offer", label: "מה אני מציעה" },
-  { id: "about", label: "אודותיי" },
+  { id: "about", label: "קצת עליי" },
   { id: "testimonials", label: "המלצות" },
   { id: "gallery", label: "גלריה" },
   { id: "contact", label: "צור קשר" },
@@ -74,20 +74,30 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex space-x-reverse space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`font-medium transition-colors relative ${
-                  activeSection === item.id
-                    ? "text-accent-500"
-                    : "text-gray-700 hover:text-primary-600"
-                }`}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute -bottom-1 right-0 left-0 h-0.5 bg-accent-500"></span>
+              <>
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`font-medium transition-colors relative ${
+                    activeSection === item.id
+                      ? "text-accent-500"
+                      : "text-gray-700 hover:text-primary-600"
+                  }`}
+                >
+                  {item.label}
+                  {activeSection === item.id && (
+                    <span className="absolute -bottom-1 right-0 left-0 h-0.5 bg-accent-500"></span>
+                  )}
+                </button>
+                {item.id === "about" && (
+                  <a
+                    href="/blog"
+                    className="font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                  >
+                    בלוג
+                  </a>
                 )}
-              </button>
+              </>
             ))}
           </div>
 
@@ -106,17 +116,27 @@ export default function Navigation() {
           <div className="lg:hidden mt-4 py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-right font-medium py-2 transition-colors ${
-                    activeSection === item.id
-                      ? "text-accent-500 font-semibold"
-                      : "text-gray-700 hover:text-primary-600"
-                  }`}
-                >
-                  {item.label}
-                </button>
+                <>
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`text-right font-medium py-2 transition-colors ${
+                      activeSection === item.id
+                        ? "text-accent-500 font-semibold"
+                        : "text-gray-700 hover:text-primary-600"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                  {item.id === "about" && (
+                    <a
+                      href="/blog"
+                      className="text-right font-medium py-2 text-gray-700 hover:text-primary-600 transition-colors"
+                    >
+                      בלוג
+                    </a>
+                  )}
+                </>
               ))}
             </div>
           </div>

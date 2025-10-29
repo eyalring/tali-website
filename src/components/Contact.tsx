@@ -105,7 +105,7 @@ export default function Contact() {
                     href="tel:+972507774581"
                     className="text-primary-100 hover:text-white transition-colors"
                   >
-                    +972-050-777-4581
+                    050-777-4581
                   </a>
                 </div>
               </div>
@@ -115,8 +115,10 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold mb-1">אימייל</p>
                   <a
-                    href="mailto:talisuf@gmail.com"
-                    className="text-primary-100 hover:text-white transition-colors"
+                    href="mailto:talisuf@gmail.com?subject=פניה מהאתר"
+                    className="text-primary-100 hover:text-white transition-colors cursor-pointer"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     talisuf@gmail.com
                   </a>
@@ -152,8 +154,7 @@ export default function Contact() {
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <h4 className="font-bold text-lg mb-2">זמינות</h4>
             <p className="text-primary-100">
-              אני זמינה להרצאות בכל רחבי הארץ - לקבוצות קטנות וגדולות, באירועים
-              פרטיים וציבוריים. נשמח לתאם פגישת היכרות ללא התחייבות.
+              אני זמינה להרצאות בכל רחבי הארץ - לקבוצות גדולות וקטנות באירועים פרטיים וציבוריים... פה בשבילכם לכל שאלה 
             </p>
           </div>
         </motion.div>
@@ -182,7 +183,7 @@ export default function Contact() {
                   {...register("name", { required: "שדה חובה" })}
                   type="text"
                   id="name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all text-black"
                   placeholder="הכניסו את שמכם המלא"
                 />
                 {errors.name && (
@@ -206,7 +207,7 @@ export default function Contact() {
                   })}
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all text-black"
                   placeholder="example@email.com"
                 />
                 {errors.email && (
@@ -224,7 +225,7 @@ export default function Contact() {
                   {...register("phone")}
                   type="tel"
                   id="phone"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all text-black"
                   placeholder="050-123-4567"
                 />
               </div>
@@ -237,7 +238,7 @@ export default function Contact() {
                   {...register("message", { required: "שדה חובה" })}
                   id="message"
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all resize-none text-black"
                   placeholder="ספרו לי על האירוע, הקהל היעד, וכל מידע נוסף שחשוב לכם..."
                 />
                 {errors.message && (

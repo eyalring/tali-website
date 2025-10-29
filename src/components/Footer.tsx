@@ -62,8 +62,10 @@ export default function Footer() {
                 <span>050-777-4581</span>
               </a>
               <a
-                href="mailto:talisuf@gmail.com"
-                className="flex items-center text-primary-100 hover:text-white transition-colors"
+                href="mailto:talisuf@gmail.com?subject=פניה מהאתר"
+                className="flex items-center text-primary-100 hover:text-white transition-colors cursor-pointer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaEnvelope className="ml-2" />
                 <span>talisuf@gmail.com</span>
@@ -90,6 +92,8 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+          
         </div>
 
         <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-200">

@@ -9,7 +9,6 @@ interface GalleryImage {
   id: number;
   title: string;
   description: string;
-  placeholder: string;
 }
 
 const galleryImages: GalleryImage[] = [
@@ -17,42 +16,57 @@ const galleryImages: GalleryImage[] = [
     id: 1,
     title: "הרצאה בקהילה",
     description: 'הרצאת גנטיקה מרתקת למבוגרים במתנ"ס',
-    placeholder: "🎤",
   },
   {
     id: 2,
     title: "הרצאה לתלמידי תיכון",
     description: "שיעור על וירולוגיה לתלמידי תיכון",
-    placeholder: "🎓",
   },
   {
     id: 3,
     title: "יום האישה",
     description: "הרצאה מיוחדת ליום האישה בחברת היי-טק",
-    placeholder: "💼",
   },
   {
     id: 4,
     title: "הרצאת בית",
     description: "ערב אינטימי עם קבוצה פרטית",
-    placeholder: "🏡",
   },
   {
     id: 5,
     title: "במעבדה",
     description: "הדגמות מעבדתיות והסברים על מחקר",
-    placeholder: "🔬",
   },
   {
     id: 6,
     title: "אירוע קהילתי",
     description: "הרצאה באירוע קהילתי גדול",
-    placeholder: "🎪",
+  },
+  {
+    id: 7,
+    title: "תמונה 7",
+    description: "תיאור קצר לתמונה 7",
+  },
+  {
+    id: 8,
+    title: "תמונה 8",
+    description: "תיאור קצר לתמונה 8",
+  },
+  {
+    id: 9,
+    title: "תמונה 9",
+    description: "תיאור קצר לתמונה 9",
+  },
+  {
+    id: 10,
+    title: "תמונה 10",
+    description: "תיאור קצר לתמונה 10",
   },
 ];
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<"images" | "videos">("images");
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -92,71 +106,59 @@ export default function Gallery() {
         transition={{ duration: 0.6 }}
       >
         <h2 className="section-title">גלריה</h2>
-        <p className="text-center text-gray-600 text-lg mb-12">
-          תמונות מהרצאות, אירועים ופעילויות שונות
-        </p>
+        <div className="flex justify-center gap-4 mb-8">
+          <button
+            onClick={() => setActiveTab("images")}
+            className={`px-4 py-2 rounded-full border transition-colors ${
+              activeTab === "images"
+                ? "bg-primary-800 text-white border-primary-800"
+                : "bg-white text-primary-800 border-primary-300 hover:bg-primary-50"
+            }`}
+          >
+            תמונות
+          </button>
+          <button
+            onClick={() => setActiveTab("videos")}
+            className={`px-4 py-2 rounded-full border transition-colors ${
+              activeTab === "videos"
+                ? "bg-primary-800 text-white border-primary-800"
+                : "bg-white text-primary-800 border-primary-300 hover:bg-primary-50"
+            }`}
+          >
+            סרטונים
+          </button>
+        </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {galleryImages.map((image, index) => (
-          <motion.div
-            key={image.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="group relative aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer"
-            onClick={() => openLightbox(index)}
-          >
-            {/* Show real image for image 1, emoji placeholder for others */}
-            {image.id === 1 ? (
+      {activeTab === "images" && (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          {galleryImages.map((image, index) => (
+            <motion.div
+              key={image.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.03 }}
+              className="group relative w-full h-28 sm:h-32 rounded-lg overflow-hidden shadow-md cursor-pointer"
+              onClick={() => openLightbox(index)}
+            >
               <Image
                 src={`/images/gallery/${image.id}.jpg`}
                 alt={image.title}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-primary-200 via-accent-100 to-primary-300 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                <div className="text-center">
-                  <div className="text-6xl mb-2">{image.placeholder}</div>
-                  <p className="text-gray-700 font-semibold px-4">
-                    {image.title}
-                  </p>
-                </div>
-              </div>
-            )}
+            </motion.div>
+          ))}
+        </div>
+      )}
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div className="p-4 w-full">
-                <h3 className="text-white font-bold text-lg mb-1">
-                  {image.title}
-                </h3>
-                <p className="text-white/90 text-sm">{image.description}</p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Add Images Instructions */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-8 p-6 bg-accent-50 border border-accent-200 rounded-xl"
-      >
-        <p className="text-center text-gray-700">
-          💡 <strong>הוראות להוספת תמונות:</strong> שמור תמונות אמיתיות בתיקיה{" "}
-          <code className="bg-white px-2 py-1 rounded">
-            public/images/gallery/
-          </code>{" "}
-          ועדכן את הקוד להשתמש בתמונות האמיתיות במקום ה-placeholders.
-        </p>
-      </motion.div>
+      {activeTab === "videos" && (
+        <div className="text-center text-black mt-8">
+          <p>סרטונים יופיעו כאן בקרוב.</p>
+        </div>
+      )}
 
       {/* Lightbox */}
       {selectedImage !== null && (
@@ -210,19 +212,6 @@ export default function Gallery() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative w-full h-full flex items-center justify-center">
-              {/* Placeholder */}
-              <div className="bg-gradient-to-br from-primary-200 via-accent-100 to-primary-300 rounded-lg p-12 max-w-2xl text-center">
-                <div className="text-9xl mb-4">
-                  {galleryImages[selectedImage].placeholder}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                  {galleryImages[selectedImage].title}
-                </h3>
-                <p className="text-gray-600 text-lg">
-                  {galleryImages[selectedImage].description}
-                </p>
-              </div>
-              {/* Uncomment when you have actual images:
               <Image
                 src={`/images/gallery/${galleryImages[selectedImage].id}.jpg`}
                 alt={galleryImages[selectedImage].title}
@@ -230,16 +219,9 @@ export default function Gallery() {
                 height={800}
                 className="max-w-full max-h-full object-contain rounded-lg"
               />
-              */}
             </div>
             <div className="mt-4 text-white text-center">
-              <h3 className="text-xl font-bold mb-1">
-                {galleryImages[selectedImage].title}
-              </h3>
-              <p className="text-gray-300">
-                {galleryImages[selectedImage].description}
-              </p>
-              <p className="text-gray-400 text-sm mt-2">
+              <p className="text-white text-sm">
                 {selectedImage + 1} / {galleryImages.length}
               </p>
             </div>

@@ -83,7 +83,7 @@ export default function WhatIOffer() {
             <h3 className="text-xl md:text-2xl font-heading font-bold text-primary-800 mb-4">
               {offer.title}
             </h3>
-            <p className="text-gray-600 leading-relaxed">{offer.description}</p>
+            <p className="text-black leading-relaxed">{offer.description}</p>
           </motion.div>
         ))}
       </div>
@@ -95,7 +95,7 @@ export default function WhatIOffer() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="mt-12 text-center"
       >
-        <p className="text-lg text-gray-700 mb-6">
+        <p className="text-lg text-black mb-6">
           ההרצאות מותאמות לקהל היעד ולרמת הידע המקצועית
         </p>
         <a href="#contact" className="btn-primary">

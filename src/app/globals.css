@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply text-gray-900 bg-white;
+    @apply text-black bg-white;
     overflow-x: hidden;
     width: 100%;
     position: relative;
