@@ -55,12 +55,16 @@ export default function BlogPage() {
               </div>
 
               <div className="p-5 flex flex-col flex-grow">
-                <h2 className="text-sm md:text-base font-heading font-bold text-primary-800 mb-3">
+                <h2
+                  className="text-sm md:text-base font-heading font-bold text-primary-800 mb-3"
+                >
                   {post.title}
                 </h2>
 
                 <div className="flex-grow">
-                  <p className="text-black text-sm md:text-base mb-3 leading-relaxed min-h-[60px]">
+                  <p
+                    className="text-black text-sm md:text-base mb-3 leading-relaxed min-h-[60px]"
+                  >
                     {post.teaser}
                   </p>
 

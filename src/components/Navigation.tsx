@@ -75,9 +75,9 @@ export default function Navigation() {
           <div className="hidden lg:flex space-x-reverse space-x-8">
             {navItems.map((item) => (
               <>
-                <button
+                <a
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  href={`/#${item.id}`}
                   className={`font-medium transition-colors relative ${
                     activeSection === item.id
                       ? "text-accent-500"
@@ -88,7 +88,7 @@ export default function Navigation() {
                   {activeSection === item.id && (
                     <span className="absolute -bottom-1 right-0 left-0 h-0.5 bg-accent-500"></span>
                   )}
-                </button>
+                </a>
                 {item.id === "about" && (
                   <a
                     href="/blog"
@@ -117,9 +117,10 @@ export default function Navigation() {
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <>
-                  <button
+                  <a
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    href={`/#${item.id}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className={`text-right font-medium py-2 transition-colors ${
                       activeSection === item.id
                         ? "text-accent-500 font-semibold"
@@ -127,7 +128,7 @@ export default function Navigation() {
                     }`}
                   >
                     {item.label}
-                  </button>
+                  </a>
                   {item.id === "about" && (
                     <a
                       href="/blog"
