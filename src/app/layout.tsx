@@ -29,12 +29,12 @@ export const metadata: Metadata = {
       "הרצאות סוחפות על גנטיקה, מדע והחיים עצמם בואו לשמוע מדע בגובה העיניים, פשוט, מעניין ומהנה",
     type: "website",
     images: [
-      { url: "/images/gallery/og-gallery.jpg", width: 1200, height: 630, alt: "Gallery preview" },
+      { url: "/images/gallery/og-gallery.JPG", width: 1200, height: 630, alt: "Gallery preview" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/gallery/og-gallery.jpg"],
+    images: ["/images/gallery/og-gallery.JPG"],
   },
 };
 
