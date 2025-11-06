@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   keywords:
     "גנטיקה, וירולוגיה, מדעי החיים, הרצאות, טלי סופרין רינגולד, אפיגנטיקה",
   authors: [{ name: "Dr. Tali Sufrin-Ringwald" }],
+  alternates: {
+    canonical: "https://drtalisufrinringwald.com/",
+  },
   openGraph: {
     url: "https://drtalisufrinringwald.com/",
     siteName: 'ד"ר טלי סופרין רינגולד',
