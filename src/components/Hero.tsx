@@ -60,7 +60,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading text-white mb-6 drop-shadow-lg">
-            הרצאות העשרה בגנטיקה וירולוגיה ומדעי החיים
+            הרצאות סוחפות על גנטיקה, מדע והחיים עצמם
           </h2>
         </motion.div>
 
@@ -70,7 +70,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <p className="text-xl md:text-2xl text-white/95 mb-12 max-w-3xl mx-auto drop-shadow">
-            בואו לשמוע מדע בגובה העיניים, פשוט, ברור ומהנה
+            בואו לשמוע מדע בגובה העיניים - פשוט, מעניין ומהנה
           </p>
         </motion.div>
 
