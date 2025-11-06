@@ -288,11 +288,6 @@ export default function Contact() {
                 אירעה שגיאה בשליחת ההודעה. אנא נסו שוב או צרו קשר ישירות בטלפון.
               </motion.div>
             )}
-
-            <p className="text-sm text-gray-500 mt-4 text-center">
-              💡 <strong>הערה:</strong> יש להגדיר שירות שליחת טפסים (Formspree,
-              EmailJS וכו&apos;) כדי שהטופס יעבוד בפועל.
-            </p>
           </form>
         </motion.div>
       </div>

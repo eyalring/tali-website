@@ -99,7 +99,7 @@ export default function WhatIOffer() {
           ההרצאות מותאמות לקהל היעד ולרמת הידע המקצועית
         </p>
         <a href="#contact" className="btn-primary">
-          צור קשר לפרטים נוספים
+          רוצים לשמוע עוד? דברו איתי
         </a>
       </motion.div>
     </section>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { FaPhone } from "react-icons/fa";
 
 export default function Hero() {
   const scrollToLectures = () => {
@@ -82,13 +83,21 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 items-center justify-center"
         >
           <button
             onClick={scrollToLectures}
-            className="btn-primary text-lg px-10 py-4"
+            className="btn-primary text-lg px-4 py-2 bg-black/50"
           >
             צפייה בהרצאות
           </button>
+          <a
+            href="tel:0507774581"
+            className="btn-primary text-base px-3 py-2 md:hidden flex items-center gap-2 bg-black/50"
+          >
+            <FaPhone />
+            דברו איתי
+          </a>
         </motion.div>
       </div>
     </section>
