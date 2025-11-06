@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-4 drop-shadow-lg">
-            ד"ר טלי סופרין רינגולד
+            ד&quot;ר טלי סופרין רינגולד
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-6 font-semibold drop-shadow">
             (PhD)

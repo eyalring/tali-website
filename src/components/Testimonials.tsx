@@ -140,7 +140,7 @@ export default function Testimonials() {
                 className="w-full"
               >
                 <p className="text-lg md:text-xl text-black leading-relaxed mb-6 italic">
-                  "{testimonials[currentIndex].content}"
+                  &quot;{testimonials[currentIndex].content}&quot;
                 </p>
                 <div className="text-right">
                   <p className="font-bold text-primary-800 text-lg">

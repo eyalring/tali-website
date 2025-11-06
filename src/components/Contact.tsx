@@ -290,7 +290,7 @@ export default function Contact() {
 
             <p className="text-sm text-gray-500 mt-4 text-center">
               💡 <strong>הערה:</strong> יש להגדיר שירות שליחת טפסים (Formspree,
-              EmailJS וכו') כדי שהטופס יעבוד בפועל.
+              EmailJS וכו&apos;) כדי שהטופס יעבוד בפועל.
             </p>
           </form>
         </motion.div>

@@ -82,7 +82,7 @@ export default function Navigation() {
             onClick={handleBrandClick}
             className="text-xl md:text-2xl font-heading font-bold text-primary-700 hover:text-primary-600 transition-colors"
           >
-            ד"ר טלי סופרין רינגולד
+            ד&quot;ר טלי סופרין רינגולד
           </Link>
 
           {/* Desktop Navigation */}

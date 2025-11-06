@@ -11,7 +11,7 @@ export default function Footer() {
           {/* About Section */}
           <div>
             <h3 className="text-xl font-heading font-bold mb-4">
-              ד"ר טלי סופרין רינגולד
+              ד&quot;ר טלי סופרין רינגולד
             </h3>
             <p className="text-primary-100">
               הרצאות העשרה בגנטיקה וירולוגיה ומדעי החיים
@@ -98,7 +98,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-200">
-          <p>© {currentYear} כל הזכויות שמורות | ד"ר טלי סופרין רינגולד</p>
+          <p>© {currentYear} כל הזכויות שמורות | ד&quot;ר טלי סופרין רינגולד</p>
         </div>
       </div>
     </footer>
