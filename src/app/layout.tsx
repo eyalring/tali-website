@@ -16,6 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://drtalisufrinringwald.com"),
   title:
     'ד"ר טלי סופרין רינגולד (PhD)',
   description:
@@ -24,6 +25,9 @@ export const metadata: Metadata = {
     "גנטיקה, וירולוגיה, מדעי החיים, הרצאות, טלי סופרין רינגולד, אפיגנטיקה",
   authors: [{ name: "Dr. Tali Sufrin-Ringwald" }],
   openGraph: {
+    url: "https://drtalisufrinringwald.com/",
+    siteName: 'ד"ר טלי סופרין רינגולד',
+    locale: "he_IL",
     title: 'ד"ר טלי סופרין רינגולד (PhD)',
     description:
       "הרצאות סוחפות על גנטיקה, מדע והחיים עצמם בואו לשמוע מדע בגובה העיניים, פשוט, מעניין ומהנה",
