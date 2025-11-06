@@ -62,11 +62,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           {post.title}
         </h1>
 
-        <p
-          className="mt-4 text-black md:text-lg leading-relaxed"
-        >
-          {post.teaser}
-        </p>
+        <p className="mt-4 text-black md:text-lg leading-relaxed">{post.teaser}</p>
 
         <div className="mt-6">
           <p

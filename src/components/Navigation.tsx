@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { id: "home", label: "בית" },
@@ -17,27 +19,30 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Detect active section
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      // Detect active section (only on home page)
+      if (pathname === "/") {
+        const sections = navItems.map((item) => document.getElementById(item.id));
+        const scrollPosition = window.scrollY + 100;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
-          break;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section && section.offsetTop <= scrollPosition) {
+            setActiveSection(navItems[i].id);
+            break;
+          }
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -53,6 +58,14 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleBrandClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      scrollToSection("home");
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
@@ -64,12 +77,13 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo / Brand */}
-          <button
-            onClick={() => scrollToSection("home")}
+          <Link
+            href="/"
+            onClick={handleBrandClick}
             className="text-xl md:text-2xl font-heading font-bold text-primary-700 hover:text-primary-600 transition-colors"
           >
             ד"ר טלי סופרין רינגולד
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex space-x-reverse space-x-8">

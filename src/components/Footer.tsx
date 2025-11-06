@@ -1,4 +1,5 @@
 import { FaFacebook, FaWhatsapp, FaEnvelope, FaPhone } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,28 +25,28 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#lectures"
+                <Link
+                  href="/#lectures"
                   className="text-primary-100 hover:text-white transition-colors"
                 >
                   ההרצאות שלי
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#about"
+                <Link
+                  href="/#about"
                   className="text-primary-100 hover:text-white transition-colors"
                 >
                   אודותיי
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/#contact"
                   className="text-primary-100 hover:text-white transition-colors"
                 >
                   צור קשר
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

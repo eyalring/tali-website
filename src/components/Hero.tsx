@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   const scrollToLectures = () => {
@@ -24,17 +25,19 @@ export default function Hero() {
     >
       {/* Background Cover Photo */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-cover.JPG"
-          alt="ד״ר טלי סופרין-רינגוולד"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          sizes="100vw"
-        />
+        <Link href="/" className="absolute inset-0 block cursor-pointer z-0">
+          <Image
+            src="/images/hero-cover.JPG"
+            alt="ד״ר טלי סופרין-רינגוולד"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+            sizes="100vw"
+          />
+        </Link>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 pointer-events-none z-0"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
