@@ -82,7 +82,7 @@ export default function MyLectures() {
                   src={lecture.imagePath}
                   alt={lecture.title}
                   fill
-                  className={`object-cover ${lecture.id === 2 ? "object-top" : ""}`}
+                  className={`object-contain md:object-cover ${lecture.id === 2 ? "md:object-top" : ""}`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>

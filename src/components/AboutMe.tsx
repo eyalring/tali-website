@@ -37,14 +37,33 @@ export default function AboutMe() {
           transition={{ duration: 0.6 }}
           className="order-1 lg:order-2"
         >
-          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/tali-portrait.jpg"
-              alt="ד״ר טלי סופרין-רינגוולד"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+          {/* Mobile card-style square like WhatIOffer */}
+          <div className="md:hidden">
+            <div className="card p-6 text-center">
+              <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/tali-portrait.jpg"
+                  alt="ד״ר טלי סופרין-רינגוולד"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <h3 className="text-xl font-heading font-bold text-primary-800">קצת עליי</h3>
+            </div>
+          </div>
+
+          {/* Desktop/tablet original large image */}
+          <div className="hidden md:block">
+            <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/tali-portrait.jpg"
+                alt="ד״ר טלי סופרין-רינגוולד"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </motion.div>
       </div>

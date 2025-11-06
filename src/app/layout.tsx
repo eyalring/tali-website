@@ -28,6 +28,13 @@ export const metadata: Metadata = {
     description:
       "הרצאות העשרה מרתקות בגנטיקה, וירולוגיה ומדעי החיים - בואו לשמוע מדע בגובה העיניים",
     type: "website",
+    images: [
+      { url: "/images/gallery/og-gallery.jpg", width: 1200, height: 630, alt: "Gallery preview" },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/gallery/og-gallery.jpg"],
   },
 };
 

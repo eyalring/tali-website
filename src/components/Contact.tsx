@@ -70,7 +70,8 @@ export default function Contact() {
       >
         <h2 className="section-title text-white">צור קשר</h2>
         <p className="text-center text-primary-100 text-lg mb-12">
-          מעוניינים בהרצאה? יש שאלות? אשמח לשמוע מכם!
+          מעוניינים בהרצאה? יש שאלות?
+          <span className="block md:inline"> אשמח לשמוע מכם!</span>
         </p>
       </motion.div>
 

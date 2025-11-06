@@ -125,7 +125,7 @@ export default function Testimonials() {
           </div>
 
           {/* Testimonial Content */}
-          <div className="relative w-full">
+          <div className="relative w-full pt-16 pb-16 md:pt-0 md:pb-0">
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -159,14 +159,14 @@ export default function Testimonials() {
           {/* Navigation Buttons */}
           <button
             onClick={() => paginate(-1)}
-            className="absolute left-2 md:-left-8 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="absolute left-2 md:-left-8 bottom-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
             aria-label="Previous testimonial"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="absolute right-2 md:-right-8 top-1/2 transform -translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="absolute right-2 md:-right-8 bottom-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
             aria-label="Next testimonial"
           >
             <FaChevronRight />
