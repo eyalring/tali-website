@@ -65,12 +65,13 @@ const testimonials: Testimonial[] = [
     name: "גלית זר בסון",
     role: "כתיבת תוכן | שיווק דיגיטלי | עיצוב ובניית אתרים. מייסדת ומנהלת את קהילת השוות של ראש העין",
     content:
-      "התוכן שבחמישי האחרון נפגשנו לערב #שווהקפה שהשאיר אותנו מרותקות תרתי משמע (ויעידו אלו שלא רצו ללכת לשירותים כדי לא לפספס אפילו מילה😉) על ההרצאה המרתקת אחראית ד״ר Tali Sufrin-Ringwald שיצאה ממעבדת המחקר והיום היא מרצה נהדרת. היא דיברה איתנו על הגנטיקה של האימהות, על המוח ועל סוגי האימהות שיש בטבע, והשאירה אותנו עם הרצון לשמוע עוד. זו הרצאה חובה לכל אישה ולכל אימא! אז ממליצה לכן בחום לעקוב אחריה. טלי, תודה ענקית על הרצאה מרתקת!",
+      'בחמישי האחרון נפגשנו לערב #שווהקפה שהשאיר אותנו מרותקות תרתי משמע (ויעידו אלו שלא רצו ללכת לשירותים כדי לא לפספס אפילו מילה😉) על ההרצאה המרתקת אחראית ד"ר Tali Sufrin-Ringwald שיצאה ממעבדת המחקר והיום היא מרצה נהדרת. היא דיברה איתנו על הגנטיקה של האימהות, על המוח ועל סוגי האימהות שיש בטבע, והשאירה אותנו עם הרצון לשמוע עוד. זו הרצאה חובה לכל אישה ולכל אימא! אז ממליצה לכן בחום לעקוב אחריה. טלי, תודה ענקית על הרצאה מרתקת!',
   },
 ];
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const fadeVariants = {
     enter: {
@@ -106,6 +107,17 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
   return (
     <section id="testimonials" className="section-container bg-white">
       <motion.div
@@ -118,14 +130,28 @@ export default function Testimonials() {
       </motion.div>
 
       <div className="max-w-4xl mx-auto">
-        <div className="relative bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl shadow-xl p-8 md:p-12 min-h-[350px] flex items-center">
+        <div className="relative bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl shadow-xl p-8 md:p-12 min-h-[520px] md:min-h-[360px] flex items-center">
           {/* Quote Icon */}
           <div className="absolute top-6 right-6 text-primary-200 opacity-50">
             <FaQuoteRight className="text-6xl" />
           </div>
 
           {/* Testimonial Content */}
-          <div className="relative w-full pt-16 pb-16 md:pt-0 md:pb-0">
+          <motion.div
+            className="relative w-full pt-16 pb-16 md:pt-0 md:pb-0"
+            drag={isMobile ? "x" : undefined}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => {
+              if (!isMobile) return;
+              if (info.offset.x < -80) {
+                paginate(1);
+              } else if (info.offset.x > 80) {
+                paginate(-1);
+              }
+            }}
+            style={{ cursor: isMobile ? "grab" : "default" }}
+          >
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -154,19 +180,19 @@ export default function Testimonials() {
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
 
           {/* Navigation Buttons */}
           <button
             onClick={() => paginate(-1)}
-            className="absolute left-2 md:-left-8 bottom-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="hidden md:flex absolute left-2 md:-left-8 bottom-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
             aria-label="Previous testimonial"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="absolute right-2 md:-right-8 bottom-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+            className="hidden md:flex absolute right-2 md:-right-8 bottom-4 md:top-1/2 md:transform md:-translate-y-1/2 bg-white hover:bg-primary-500 text-primary-600 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 z-10"
             aria-label="Next testimonial"
           >
             <FaChevronRight />

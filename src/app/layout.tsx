@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import FloatingContactButtons from "@/components/FloatingContactButtons";
+import LoadingOverlay from "@/components/LoadingOverlay";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -51,14 +47,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="he"
-      dir="rtl"
-      className={`${inter.variable} ${poppins.variable}`}
-    >
+    <html lang="he" dir="rtl" className={inter.variable}>
       <body className="font-sans overflow-x-hidden">
+        <LoadingOverlay />
         <Navigation />
         <main>{children}</main>
+        <FloatingContactButtons />
         <Footer />
       </body>
     </html>

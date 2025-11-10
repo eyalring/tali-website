@@ -47,12 +47,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-2xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-4 drop-shadow-lg whitespace-nowrap px-2 md:px-0">
+          <h1 className="text-2xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 drop-shadow-lg whitespace-nowrap px-2 md:px-0 flex items-center justify-center gap-3">
             ד&quot;ר טלי סופרין רינגולד
+            <span className="text-lg md:text-4xl lg:text-5xl font-semibold text-white/90">
+              (PhD)
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-6 font-semibold drop-shadow">
-            (PhD)
-          </p>
         </motion.div>
 
         <motion.div
@@ -60,7 +60,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-heading text-white mb-6 drop-shadow-lg whitespace-nowrap">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-heading text-white mb-6 drop-shadow-lg px-4 md:px-0">
             הרצאות סוחפות על גנטיקה, מדע והחיים עצמם
           </h2>
         </motion.div>
@@ -91,13 +91,6 @@ export default function Hero() {
           >
             צפייה בהרצאות
           </button>
-          <a
-            href="tel:0507774581"
-            className="btn-primary text-base px-3 py-2 md:hidden flex items-center gap-2 bg-black/50"
-          >
-            <FaPhone />
-            דברו איתי
-          </a>
         </motion.div>
       </div>
     </section>
