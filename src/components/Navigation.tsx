@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaShareAlt, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -66,6 +66,31 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleShare = async () => {
+    const shareUrl =
+      typeof window !== "undefined"
+        ? window.location.href
+        : "https://drtalisufrinringwald.com";
+    const shareData = {
+      title: "ד\"ר טלי סופרין רינגולד",
+      text: "בואו להכיר את הרצאותיה של ד\"ר טלי סופרין רינגולד.",
+      url: shareUrl,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else if (navigator.clipboard && shareUrl) {
+        await navigator.clipboard.writeText(shareUrl);
+        alert("הקישור הועתק ללוח!");
+      } else {
+        window.open(shareUrl, "_blank");
+      }
+    } catch (error) {
+      console.error("Share failed:", error);
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
@@ -85,44 +110,57 @@ export default function Navigation() {
             ד&quot;ר טלי סופרין רינגולד
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-reverse space-x-8">
-            {navItems.map((item) => (
-              <>
-                <a
-                  key={item.id}
-                  href={`/#${item.id}`}
-                  className={`font-medium transition-colors relative ${
-                    activeSection === item.id
-                      ? "text-accent-500"
-                      : "text-gray-700 hover:text-primary-600"
-                  }`}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <span className="absolute -bottom-1 right-0 left-0 h-0.5 bg-accent-500"></span>
-                  )}
-                </a>
-                {item.id === "about" && (
+          <div className="flex items-center gap-4">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex space-x-reverse space-x-8">
+              {navItems.map((item) => (
+                <>
                   <a
-                    href="/blog"
-                    className="font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                    key={item.id}
+                    href={`/#${item.id}`}
+                    className={`font-medium transition-colors relative ${
+                      activeSection === item.id
+                        ? "text-accent-500"
+                        : "text-gray-700 hover:text-primary-600"
+                    }`}
                   >
-                    בלוג
+                    {item.label}
+                    {activeSection === item.id && (
+                      <span className="absolute -bottom-1 right-0 left-0 h-0.5 bg-accent-500"></span>
+                    )}
                   </a>
-                )}
-              </>
-            ))}
-          </div>
+                  {item.id === "about" && (
+                    <a
+                      href="/blog"
+                      className="font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                    >
+                      בלוג
+                    </a>
+                  )}
+                </>
+              ))}
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-2xl text-primary-700 hover:text-primary-600 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+            {/* Share Button */}
+            <button
+              onClick={handleShare}
+              className="text-2xl text-primary-700 hover:text-primary-600 transition-colors"
+              aria-label="Share this site"
+              type="button"
+            >
+              <FaShareAlt />
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden text-2xl text-primary-700 hover:text-primary-600 transition-colors"
+              aria-label="Toggle menu"
+              type="button"
+            >
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
