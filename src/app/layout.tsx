@@ -11,12 +11,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const heroHeadlineLine1 = "הרצאות סוחפות על גנטיקה";
+const heroHeadlineLine2 = "מדע והחיים עצמם";
+const siteDescription = `${heroHeadlineLine1} ${heroHeadlineLine2} – בואו לשמוע מדע בגובה העיניים, פשוט, מעניין ומהנה`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://drtalisufrinringwald.com"),
-  title:
-    'ד"ר טלי סופרין רינגולד (PhD)',
-  description:
-    "הרצאות סוחפות על גנטיקה, מדע והחיים עצמם בואו לשמוע מדע בגובה העיניים, פשוט, מעניין ומהנה",
+  title: 'ד"ר טלי סופרין רינגולד (PhD)',
+  description: siteDescription,
   keywords:
     "גנטיקה, וירולוגיה, מדעי החיים, הרצאות, טלי סופרין רינגולד, אפיגנטיקה",
   authors: [{ name: "Dr. Tali Sufrin-Ringwald" }],
@@ -28,15 +30,21 @@ export const metadata: Metadata = {
     siteName: 'ד"ר טלי סופרין רינגולד',
     locale: "he_IL",
     title: 'ד"ר טלי סופרין רינגולד (PhD)',
-    description:
-      "הרצאות סוחפות על גנטיקה, מדע והחיים עצמם בואו לשמוע מדע בגובה העיניים, פשוט, מעניין ומהנה",
+    description: `${heroHeadlineLine1}\n${heroHeadlineLine2}\nבואו לשמוע מדע בגובה העיניים, פשוט, מעניין ומהנה`,
     type: "website",
     images: [
-      { url: "/images/gallery/og-gallery.JPG", width: 1200, height: 630, alt: "Gallery preview" },
+      {
+        url: "/images/gallery/og-gallery.JPG",
+        width: 1200,
+        height: 630,
+        alt: "Gallery preview",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    title: 'ד"ר טלי סופרין רינגולד (PhD)',
+    description: siteDescription,
     images: ["/images/gallery/og-gallery.JPG"],
   },
 };

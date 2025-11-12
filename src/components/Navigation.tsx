@@ -67,10 +67,12 @@ export default function Navigation() {
   };
 
   const handleShare = async () => {
+    const canonicalUrl = "https://drtalisufrinringwald.com";
     const shareUrl =
-      typeof window !== "undefined"
+      typeof window !== "undefined" &&
+      window.location.origin.includes("drtalisufrinringwald.com")
         ? window.location.href
-        : "https://drtalisufrinringwald.com";
+        : canonicalUrl;
     const shareData = {
       title: "ד\"ר טלי סופרין רינגולד",
       text: "בואו להכיר את הרצאותיה של ד\"ר טלי סופרין רינגולד.",
