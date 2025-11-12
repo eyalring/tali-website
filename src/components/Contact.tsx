@@ -59,7 +59,7 @@ export default function Contact() {
         "bot-field": data.botField ?? "",
       };
 
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(payload),
@@ -197,6 +197,7 @@ export default function Contact() {
             className="bg-white rounded-2xl p-8 text-gray-900"
             name="contact"
             method="POST"
+            action="/__forms.html"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
