@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   FaPhone,
@@ -15,9 +15,18 @@ import {
 interface ContactFormData {
   name: string;
   email: string;
-  phone: string;
+  phone?: string;
   message: string;
+  botField?: string;
 }
+
+const encode = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map(
+      (key) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+    )
+    .join("&");
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,17 +41,33 @@ export default function Contact() {
     formState: { errors },
   } = useForm<ContactFormData>();
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (
+    data: ContactFormData,
+    event?: BaseSyntheticEvent
+  ) => {
+    event?.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
     try {
-      // TODO: Replace with actual form submission logic
-      // For example, send to an API endpoint, email service, or form service like Formspree
-      console.log("Form data:", data);
+      const payload = {
+        "form-name": "contact",
+        name: data.name,
+        email: data.email,
+        phone: data.phone ?? "",
+        message: data.message,
+        "bot-field": data.botField ?? "",
+      };
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
 
       setSubmitStatus("success");
       reset();
@@ -170,7 +195,24 @@ export default function Contact() {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-white rounded-2xl p-8 text-gray-900"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
           >
+            <input type="hidden" name="form-name" value="contact" />
+            <div className="hidden">
+              <label>
+                אל תמלאו את השדה הזה
+                <input
+                  {...register("botField")}
+                  name="bot-field"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </label>
+            </div>
             <h3 className="text-2xl font-heading font-bold mb-6 text-primary-800">
               שלחו לי הודעה
             </h3>
