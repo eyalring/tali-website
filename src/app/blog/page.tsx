@@ -62,11 +62,13 @@ export default function BlogPage() {
                 </h2>
 
                 <div className="flex-grow">
-                  <p
-                    className="text-black text-sm md:text-base mb-3 leading-relaxed min-h-[60px]"
-                  >
-                    {post.teaser}
-                  </p>
+                  {post.teaser && (
+                    <p
+                      className="text-black text-sm md:text-base mb-3 leading-relaxed"
+                    >
+                      {post.teaser}
+                    </p>
+                  )}
 
                   {expandedPost === post.id && (
                     <motion.div
