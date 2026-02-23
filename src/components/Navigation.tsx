@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaBars, FaShareAlt, FaTimes } from "react-icons/fa";
+import { FaBars, FaShareAlt, FaTimes, FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 const navItems = [
   { id: "home", label: "בית" },
   { id: "lectures", label: "ההרצאות שלי" },
@@ -143,15 +142,35 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* Share Button */}
-            <button
-              onClick={handleShare}
-              className="text-2xl text-primary-700 hover:text-primary-600 transition-colors"
-              aria-label="Share this site"
-              type="button"
-            >
-              <FaShareAlt />
-            </button>
+            {/* Social & Share Buttons */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/profile.php?id=61560015465070"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-3xl text-primary-700 hover:text-primary-600 transition-colors"
+                aria-label="Facebook"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="https://www.instagram.com/dr_tali_sufrin/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-3xl text-primary-700 hover:text-primary-600 transition-colors"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+              <button
+                onClick={handleShare}
+                className="text-2xl text-primary-700 hover:text-primary-600 transition-colors"
+                aria-label="Share this site"
+                type="button"
+              >
+                <FaShareAlt />
+              </button>
+            </div>
 
             {/* Mobile Menu Button */}
             <button

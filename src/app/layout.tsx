@@ -43,6 +43,7 @@ const structuredData = {
       sameAs: [
         "https://www.facebook.com/profile.php?id=61560015465070",
         "https://wa.me/972507774581",
+        "https://www.instagram.com/dr_tali_sufrin/",
       ],
     },
     {

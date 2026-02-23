@@ -6,6 +6,7 @@ import {
   FaEnvelope,
   FaWhatsapp,
   FaFacebook,
+  FaInstagram,
 } from "react-icons/fa";
 
 export default function Contact() {
@@ -23,7 +24,11 @@ export default function Contact() {
       >
         <h2 className="section-title text-white">דברו איתי</h2>
         <p className="text-center text-primary-100 text-lg mb-12">
-          מעוניינים בהרצאה? רוצים לשמוע עוד פרטים? יש לכם שאלות? אשמח לשמוע מכם
+          מעוניינים בהרצאה? רוצים לשמוע עוד פרטים? רוצים ליצור משהו ביחד?
+          <br />
+          צריכים הרצאה/קורס/סדנה בהתאמה אישית? יש לכם שאלות?
+          <br />
+          אשמח לשמוע מכם 🙂
         </p>
       </motion.div>
 
@@ -91,6 +96,15 @@ export default function Contact() {
                 aria-label="Facebook"
               >
                 <FaFacebook className="text-3xl" />
+              </a>
+              <a
+                href="https://www.instagram.com/dr_tali_sufrin/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 hover:bg-accent-500 p-4 rounded-full transition-all duration-300 transform hover:scale-110"
+                aria-label="Instagram"
+              >
+                <FaInstagram className="text-3xl" />
               </a>
             </div>
           </div>
