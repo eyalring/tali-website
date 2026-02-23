@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaPhone, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaPhone, FaWhatsapp } from "react-icons/fa";
 
 export default function Hero() {
   const scrollToLectures = () => {
@@ -102,6 +102,15 @@ export default function Hero() {
               aria-label="Facebook"
             >
               <FaFacebook className="text-3xl" />
+            </a>
+            <a
+              href="https://www.instagram.com/dr_tali_sufrin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/90 hover:text-accent-300 transition-colors"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="text-3xl" />
             </a>
             <a
               href="https://wa.me/972507774581"
