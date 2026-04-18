@@ -63,6 +63,15 @@ const lectures: Lecture[] = [
 מזמינה אתכם להרצאה על מוח וגוף, על ביולוגיה ותרבות, על הישרדות ומשמעות ובעיקר על השאלה שמעסיקה את כולנו: עד כמה הרגשות מנהלים אותנו, ועד כמה אנחנו יכולים להבין – ואולי גם לנהל אותם.`,
     imagePath: "/images/lectures/lecture5.png",
   },
+  {
+    id: 6,
+    title: "הכול בראש - כאב: גוף מוח ומה שביניהם",
+    teaser: `מה זה כאב?
+האם הוא תחושה בגוף - או חוויה במוח? האם הוא קורה בגוף? או נבנה במוח? 
+איך אות חשמלי שמתחיל בקצות העצבים הופך לחוויה עוצמתית, אישית, ולעיתים גם מתמשכת? בהרצאה זו נצלול אל הגוף, אל המוח—ומה שביניהם: המסלולים, המנגנונים, הפסיכולוגיה והפער בין תחושת הכאב לחווית הכאב עצמה.`,
+    description: `כולנו חווים כאב אבל לא באמת מבינים אותו. הוא מרגיש כמו הדבר הכי מוחשי שיש, אבל מה אם הוא לא רק תגובה של הגוף אלא גם סיפור שהמוח שלנו מספר? כאב הוא מנגנון הישרדות חיוני, אבל הוא גם חוויה שמשתנה מאדם לאדם, מושפעת מגנטיקה, מזיכרונות, מרגשות ומהקשר. בהרצאה הזו נגלה איך כאב באמת עובד, למה הוא עדיין אחת החידות הגדולות של הרפואה, למה לפעמים הוא נשאר גם כשהכול כבר "בסדר" ואולי הכי מפתיע — נגלה גם כמה השפעה יש לנו עליו.`,
+    imagePath: "/images/lectures/lecture6.png",
+  },
 ];
 
 export default function MyLectures() {
@@ -111,7 +120,7 @@ export default function MyLectures() {
                 </h3>
 
                 <div className="flex-grow">
-                  <p className="text-black mb-4 leading-relaxed min-h-[80px]">
+                  <p className="text-black mb-4 leading-relaxed min-h-[80px] whitespace-pre-line">
                     {lecture.teaser}
                   </p>
 
@@ -125,10 +134,10 @@ export default function MyLectures() {
                     >
                       <p
                         className={`text-black leading-relaxed ${
-                          [1, 2, 3, 4, 5].includes(lecture.id) ? "text-sm md:text-base" : ""
+                          [1, 2, 3, 4, 5, 6].includes(lecture.id) ? "text-sm md:text-base" : ""
                         }`}
                         style={
-                          [1, 2, 3, 4, 5].includes(lecture.id)
+                          [1, 2, 3, 4, 5, 6].includes(lecture.id)
                             ? { fontFamily: "Calibri, Arial, sans-serif" }
                             : undefined
                         }
