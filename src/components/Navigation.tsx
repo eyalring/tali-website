@@ -106,9 +106,24 @@ export default function Navigation() {
           <Link
             href="/"
             onClick={handleBrandClick}
-            className="text-xl md:text-2xl font-heading font-bold text-primary-700 hover:text-primary-600 transition-colors"
+            className="flex items-center gap-2 text-xl md:text-2xl font-heading font-bold text-primary-700 hover:text-primary-600 transition-colors"
           >
-            ד&quot;ר טלי סופרין רינגולד
+            <span
+              aria-hidden="true"
+              className="h-8 w-8 md:h-9 md:w-9 inline-block"
+              style={{
+                backgroundColor: "currentColor",
+                WebkitMaskImage: "url('/images/logo.png.png')",
+                maskImage: "url('/images/logo.png.png')",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+              }}
+            />
+            <span>ד&quot;ר טלי סופרין רינגולד</span>
           </Link>
 
           <div className="flex items-center gap-4">
