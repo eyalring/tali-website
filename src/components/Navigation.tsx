@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { FaBars, FaShareAlt, FaTimes, FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const LOGO_URL = "/images/logo.png?v=2";
+
 const navItems = [
   { id: "home", label: "בית" },
   { id: "lectures", label: "ההרצאות שלי" },
@@ -108,20 +111,11 @@ export default function Navigation() {
             onClick={handleBrandClick}
             className="flex items-center gap-2 text-xl md:text-2xl font-heading font-bold text-primary-700 hover:text-primary-600 transition-colors"
           >
-            <span
-              aria-hidden="true"
-              className="h-8 w-8 md:h-9 md:w-9 inline-block"
-              style={{
-                backgroundColor: "currentColor",
-                WebkitMaskImage: "url('/images/logo.png.png')",
-                maskImage: "url('/images/logo.png.png')",
-                WebkitMaskRepeat: "no-repeat",
-                maskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                maskPosition: "center",
-                WebkitMaskSize: "contain",
-                maskSize: "contain",
-              }}
+            <img
+              src={LOGO_URL}
+              alt=""
+              aria-hidden
+              className="h-10 w-10 md:h-11 md:w-11 shrink-0 object-contain"
             />
             <span>ד&quot;ר טלי סופרין רינגולד</span>
           </Link>
