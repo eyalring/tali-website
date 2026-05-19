@@ -104,12 +104,12 @@ export default function MyLectures() {
           >
             <div className="p-0 flex flex-col flex-grow">
               {/* Lecture Image */}
-              <div className="relative w-full h-64 flex-shrink-0">
+              <div className="relative w-full aspect-video bg-black flex-shrink-0 overflow-hidden">
                 <Image
                   src={lecture.imagePath}
                   alt={lecture.title}
                   fill
-                  className={`object-contain md:object-cover ${lecture.id === 2 ? "md:object-top" : ""}`}
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
